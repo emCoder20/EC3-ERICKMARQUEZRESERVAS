@@ -34,21 +34,21 @@ public class UsuariosClientesController {
     }
 
     @GetMapping("/buscar/{id_usuario}") //Http Method GET
-    public ResponseEntity<?> buscar(@PathVariable Integer id_usuario) {
-        UsuarioClientes uc =service.obtenerPorId(id_usuario);
+    public ResponseEntity<?> buscar(@PathVariable Integer idUsuario) {
+        UsuarioClientes uc =service.obtenerPorId(idUsuario);
         if(uc != null) {
-            return  new ResponseEntity<UsuarioClientes>(service.obtenerPorId(id_usuario),HttpStatus.OK);
+            return  new ResponseEntity<UsuarioClientes>(service.obtenerPorId(idUsuario),HttpStatus.OK);
         }
         return  new ResponseEntity<UsuarioClientes>(HttpStatus.NOT_FOUND);
     }
 
 
     @DeleteMapping("/eliminar/{id_usuario}") //Http Method DELETE
-    public ResponseEntity<?> borrar(@PathVariable Integer id_usuario) {
-        UsuarioClientes uc =service.obtenerPorId(id_usuario);
+    public ResponseEntity<?> borrar(@PathVariable Integer idUsuario) {
+        UsuarioClientes uc =service.obtenerPorId(idUsuario);
         Map<String, Object> response = new HashMap<>();
         if(uc != null) {
-            service.eliminar(id_usuario);
+            service.eliminar(idUsuario);
             response.put("mensaje", "UsuarioClientes '" .concat(uc.getUsuario()).concat("Se ha eliminado con éxito!"));
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
         }

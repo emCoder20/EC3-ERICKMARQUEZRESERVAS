@@ -33,21 +33,21 @@ public class HospitalesController {
     }
 
     @GetMapping("/buscar/{id_hospital}") //Http Method GET
-    public ResponseEntity<?> buscar(@PathVariable Integer id_hospital) {
-        Hospitales h =service.obtenerPorId(id_hospital);
+    public ResponseEntity<?> buscar(@PathVariable Integer idHospital) {
+        Hospitales h =service.obtenerPorId(idHospital);
         if(h != null) {
-            return  new ResponseEntity<Hospitales>(service.obtenerPorId(id_hospital),HttpStatus.OK);
+            return  new ResponseEntity<Hospitales>(service.obtenerPorId(idHospital),HttpStatus.OK);
         }
         return  new ResponseEntity<Hospitales>(HttpStatus.NOT_FOUND);
     }
 
 
     @DeleteMapping("/eliminar/{id_hospital}") //Http Method DELETE
-    public ResponseEntity<?> borrar(@PathVariable Integer id_hospital) {
-        Hospitales h =service.obtenerPorId(id_hospital);
+    public ResponseEntity<?> borrar(@PathVariable Integer idHospital) {
+        Hospitales h =service.obtenerPorId(idHospital);
         Map<String, Object> response = new HashMap<>();
         if(h != null) {
-            service.eliminar(id_hospital);
+            service.eliminar(idHospital);
             response.put("mensaje", "El Hospital '" .concat(h.getNombre()).concat("' se ha eliminado con éxito!"));
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
         }

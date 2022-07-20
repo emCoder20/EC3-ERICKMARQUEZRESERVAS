@@ -35,21 +35,21 @@ public class ClientesController {
     }
 
     @GetMapping("/buscar/{id_cliente}") //Http Method GET
-    public ResponseEntity<?> buscar(@PathVariable Integer id_cliente) {
-        Clientes c =service.obtenerPorId(id_cliente);
+    public ResponseEntity<?> buscar(@PathVariable Integer idCliente) {
+        Clientes c =service.obtenerPorId(idCliente);
         if(c != null) {
-            return  new ResponseEntity<Clientes>(service.obtenerPorId(id_cliente),HttpStatus.OK);
+            return  new ResponseEntity<Clientes>(service.obtenerPorId(idCliente),HttpStatus.OK);
         }
         return  new ResponseEntity<Clientes>(HttpStatus.NOT_FOUND);
     }
 
 
     @DeleteMapping("/eliminar/{id_cliente}") //Http Method DELETE
-    public ResponseEntity<?> borrar(@PathVariable Integer id_cliente) {
-        Clientes c =service.obtenerPorId(id_cliente);
+    public ResponseEntity<?> borrar(@PathVariable Integer idCliente) {
+        Clientes c =service.obtenerPorId(idCliente);
         Map<String, Object> response = new HashMap<>();
         if(c != null) {
-            service.eliminar(id_cliente);
+            service.eliminar(idCliente);
             response.put("mensaje", "Cliente '" .concat(c.getNombre()).concat("' eliminado con éxito!"));
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
         }
