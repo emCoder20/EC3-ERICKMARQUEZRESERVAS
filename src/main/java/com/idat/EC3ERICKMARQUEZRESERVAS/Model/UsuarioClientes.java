@@ -1,8 +1,17 @@
 package com.idat.EC3ERICKMARQUEZRESERVAS.Model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
 @Entity
 @Table(name = "usuarioclientes")
 public class UsuarioClientes {
@@ -14,43 +23,10 @@ public class UsuarioClientes {
     private String password;
     private String rol;
 
-
     @OneToOne
-    @JoinColumn(name="id_cliente", nullable = false, unique = true,
-    foreignKey = @ForeignKey(foreignKeyDefinition = "foreign key(id_cliente) references clientes(id_cliente)"))
-
+    @JoinColumn(name = "id_cliente",
+            nullable = false,
+            unique = true)
     private Clientes clientes;
-
-    public Integer getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
 
 }
