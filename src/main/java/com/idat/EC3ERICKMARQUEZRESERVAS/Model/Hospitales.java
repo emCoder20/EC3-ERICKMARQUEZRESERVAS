@@ -26,7 +26,7 @@ public class Hospitales {
     private String descripcion;
     private String distrito;
 
-    @JsonIgnoreProperties({"hospital"})
+    @JsonIgnoreProperties({"hospitales"})
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name = "hospitales_clientes",
@@ -44,4 +44,6 @@ public class Hospitales {
 
     )
     private List<Clientes>clientes = new ArrayList<>();
+
+
 }

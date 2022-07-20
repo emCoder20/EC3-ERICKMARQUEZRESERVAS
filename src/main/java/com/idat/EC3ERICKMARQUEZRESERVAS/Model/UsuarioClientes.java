@@ -29,4 +29,5 @@ public class UsuarioClientes {
             unique = true)
     private Clientes clientes;
 
+
 }

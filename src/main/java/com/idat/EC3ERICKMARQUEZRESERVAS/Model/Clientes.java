@@ -24,8 +24,8 @@ public class Clientes {
     private String nombre;
     private Integer celular;
 
-
     @JsonIgnoreProperties({"clientes","hospitales"})
     @ManyToMany(mappedBy = "clientes", cascade ={CascadeType.PERSIST, CascadeType.MERGE})
     private List<Hospitales>hospitales = new ArrayList<>();
+
 }
